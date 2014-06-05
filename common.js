@@ -358,6 +358,10 @@ define(["./List", "./Record",
 							if (keyPos + 1 < extensionSubtagsLength
 								&& extensionSubtags[String(keyPos + 1)].length > 2) {
 								var requestedValue = extensionSubtags[String(keyPos + 1)];
+								// fix for islamic-civil, islamic-umalqura & islamic-tbla calendars
+								if (requestedValue === "islamic" && extensionSubtags[String(keyPos + 2)]) {
+									requestedValue += "-" + extensionSubtags[String(keyPos + 2)];
+								}
 								valuePos = keyLocaleData.indexOf(requestedValue);
 								if (valuePos !== -1) {
 									value = requestedValue;
