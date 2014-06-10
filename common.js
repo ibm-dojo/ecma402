@@ -323,7 +323,7 @@ define(["./List", "./Record",
 			},
 
 			// ECMA 402 Section 9.2.5
-			/* jshint maxcomplexity: 13 */
+			/* jshint maxcomplexity: 14 */
 			ResolveLocale : function (availableLocales, requestedLocales, options, relevantExtensionKeys,
 									  localeData) {
 				var matcher = options.localeMatcher;

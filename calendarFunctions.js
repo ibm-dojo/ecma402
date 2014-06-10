@@ -102,6 +102,7 @@ define([ "./Record", "requirejs-text/text!./cldr/supplemental/calendarData.json"
 			}
 			return 0;
 		},
+		/* jshint maxcomplexity: 26 */
 		difference : function (/*Date*/ date1, /*Date?*/ date2, /*String?*/ interval) {
 			// summary:
 			//		Get the difference in a specific unit of time (e.g., number of

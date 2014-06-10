@@ -195,7 +195,7 @@ define([ "./Record", "./calendarFunctions", "./gregorianCalendar", "./islamicCal
 			gregorianRef[60] = new Date(2173, 11, 7, 0, 0, 0, 0);
 			return gregorianRef;
 		},
-		
+		/* jshint maxcomplexity: 26 */
 		fromGregorian : function (/* Date */gdate) {
 			// summary:
 			//		This function returns the equivalent islamic(umalqura) date value for a give input gregorian date.
