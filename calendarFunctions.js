@@ -218,7 +218,7 @@ define([ "./Record", "requirejs-text/text!./cldr/supplemental/calendarData.json"
 			/* falls through */
 			case "day":
 				delta /= 24;
-			/* falls through */	
+			/* falls through */
 			case "hour":
 				delta /= 60;
 			/* falls through */
@@ -227,7 +227,7 @@ define([ "./Record", "requirejs-text/text!./cldr/supplemental/calendarData.json"
 			/* falls through */
 			case "second":
 				delta /= 1000;
-
+			/* falls through */
 			case "millisecond":
 				delta *= date2.getTime() - date1.getTime();
 			}
