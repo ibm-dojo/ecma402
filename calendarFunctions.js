@@ -215,18 +215,19 @@ define([ "./Record", "requirejs-text/text!./cldr/supplemental/calendarData.json"
 				// Don't use Math.floor -- value may be negative
 				delta = parseInt(this.difference(date1, date2, "day") / 7, 10);
 				break;
+			/* falls through */
 			case "day":
 				delta /= 24;
-				// fallthrough
+			/* falls through */	
 			case "hour":
 				delta /= 60;
-				// fallthrough
+			/* falls through */
 			case "minute":
 				delta /= 60;
-				// fallthrough
+			/* falls through */
 			case "second":
 				delta /= 1000;
-				// fallthrough
+
 			case "millisecond":
 				delta *= date2.getTime() - date1.getTime();
 			}
