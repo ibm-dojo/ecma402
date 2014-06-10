@@ -243,9 +243,9 @@ define([ "./Record", "./calendarFunctions", "./gregorianCalendar", "./islamicCal
 						pos = pos * 5;
 						for (var i = pos; i < pos + 5; i++) {
 							for (j = 0; j <= 11; j++) {
-								if (this.MONTH_LENGTH[i].charAt(j) === '1') {
+								if (this.MONTH_LENGTH[i].charAt(j) === "1") {
 									monthL = 30;
-								} else if (this.MONTH_LENGTH[i].charAt(j) === '0') {
+								} else if (this.MONTH_LENGTH[i].charAt(j) === "0") {
 									monthL = 29;
 								}
 								
@@ -294,9 +294,9 @@ define([ "./Record", "./calendarFunctions", "./gregorianCalendar", "./islamicCal
 				} else {
 					diff = calendarFunctions.difference(gregorianRef[this.M_ROWS], date, "day");
 					for (j = 0; j <= 11; j++) {
-						if (this.MONTH_LENGTH[this.M_LAST_INDX].charAt(j) === '1') {
+						if (this.MONTH_LENGTH[this.M_LAST_INDX].charAt(j) === "1") {
 							monthL = 30;
-						} else if (this.MONTH_LENGTH[this.M_LAST_INDX].charAt(j) === '0') {
+						} else if (this.MONTH_LENGTH[this.M_LAST_INDX].charAt(j) === "0") {
 							monthL = 29;
 						}
 						if (diff > monthL) {
