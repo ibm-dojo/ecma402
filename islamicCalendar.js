@@ -2,7 +2,7 @@ define(
 	[ "./Record", "./calendarFunctions"], function (Record, calendarFunctions) {
 
 		
-	var islamicCalendar = {
+	return {
 		
 		SYNODIC_MONTH     : 29.530588853,
 		TROPICAL_YEAR     : 365.242191,
@@ -323,6 +323,4 @@ define(
 			return 2.0 * Math.atan(Math.tan(E / 2) * Math.sqrt((1 + eccentricity) / (1 - eccentricity)));
 		}
 	};
-
-	return islamicCalendar;
 });

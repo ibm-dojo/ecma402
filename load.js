@@ -23,10 +23,7 @@ define([
 			} else if (locale === "ja") {
 				jsonElements.push("ca-japanese");
 			} else if (locale === "ar-SA") {
-				jsonElements.push("ca-islamic");
-				jsonElements.push("ca-islamic-umalqura");
-				jsonElements.push("ca-islamic-civil");
-				jsonElements.push("ca-islamic-tbla");
+				jsonElements.push("ca-islamic", "ca-islamic-umalqura", "ca-islamic-civil", "ca-islamic-tbla");
 			}
 			var dependencies = jsonElements.map(function (element) {
 				return "requirejs-text/text!./cldr/" + locale + "/" + element + ".json";

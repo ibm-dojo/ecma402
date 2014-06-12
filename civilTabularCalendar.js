@@ -1,6 +1,6 @@
 define([ "./Record", "./calendarFunctions"], function (Record, calendarFunctions) {
 	
-	var civilTabularCalendar = {
+	return {
 		
 		CIVIL_EPOC : 1948439.5,
 		ASTRONOMICAL_EPOC : 1948438.5,
@@ -59,6 +59,4 @@ define([ "./Record", "./calendarFunctions"], function (Record, calendarFunctions
 			return result;
 		}
 	};
-	
-	return civilTabularCalendar;
 });
