@@ -3,7 +3,6 @@
 // Loads ./Intl.js only if necessary
 //
 /* global Intl */
-define(typeof Intl === "undefined" || !Intl.NumberFormat || !Intl.DateTimeFormat ? ["./Intl"] : [],
-		function (ecma402Intl) {
-	return ecma402Intl || Intl;
+define(["./features!Intl-api?:./Intl"], function (ibmjsIntl) {
+	return ibmjsIntl || Intl;
 });
