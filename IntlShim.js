@@ -3,6 +3,6 @@
 // Loads ./Intl.js only if necessary
 //
 /* global Intl */
-define(["./features!Intl-api?:./Intl"], function (ibmjsIntl) {
-	return ibmjsIntl || Intl;
+define(["./features!intl-api?:./Intl"], function (IntlShim) {
+	return IntlShim || Intl;
 });
