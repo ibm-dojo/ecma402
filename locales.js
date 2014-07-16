@@ -11,8 +11,11 @@ define([
 	"module",
 	"require",
 	"./impl/common",
-	"./impl/load"	// just so builder knows we will be using that module
-], function (module, require, common) {
+	"./impl/load"
+], function (module, require, common, loadCss) {
+	// Build variable
+	var writeFile;
+
 	// Compute locales to pre-load. Use hash to remove duplicates.
 	var localeHash = {};
 	localeHash.root = true;
@@ -38,20 +41,60 @@ define([
 		}
 	}
 	var locales = Object.keys(localeHash);
+	var localeDataHash = {};
 
 	// Compute dependencies to require()
-	var dependencies = locales.map(function (locale) { return "./impl/load!" + locale; });
+	function getDependency(locale) {
+		return loadCss.id + "!" + locale;
+	}
 
 	return {
 		load: function (path, callerRequire, onload) {
+			var dependencies = locales.map(getDependency);
 			// Load the locale data for every requested locale, and then return it in a hash
 			require(dependencies, function () {
-				var localeDataArray = arguments, localeDataHash = {};
+				var localeDataArray = arguments;
 				locales.forEach(function (locale, idx) {
 					localeDataHash[locale] = localeDataArray[idx];
 				});
 				onload(localeDataHash);
 			});
+		},
+
+		writeFile: function (pluginName, resource, callerRequire, write) {
+			writeFile = write;
+		},
+
+		addModules: function (pluginName, resource, addModules) {
+			var modulesToAdd = [];
+			locales.forEach(function (locale) {
+				var localeData = localeDataHash[locale];
+				modulesToAdd = modulesToAdd.concat(localeData.calendars.map(function (cal){return "./calendars/" + cal;}));
+				delete localeData.calendars;
+			});
+			addModules(modulesToAdd);
+		},
+
+		onLayerEnd: function (write, data) {
+			function getLayerPath(data, loc) {
+				var match = data.path.match(/^(.*\/)?(.*)\.js$/);
+				return (match[1] || "") + "cldr/" + match[2] + "_" + loc + ".js";
+			}
+			function getLayerMid(data) {
+				var match = data.name.match(/^(.*\/)?(.*)$/);
+				return (match[1] || "") + "cldr/" + match[2];
+			}
+
+			locales.forEach(function (locale) {
+				var path = getLayerPath(data, locale);
+				writeFile(path, "define(" + JSON.stringify(localeDataHash[locale]) + ")");
+			});
+
+			localeHash._layerMid = getLayerMid(data);
+			write("require.config({config:{'" + loadCss.id + "':" + JSON.stringify(localeHash) + "}});")
+
+			// Reset
+			localeDataHash = {};
 		}
 	};
 });
