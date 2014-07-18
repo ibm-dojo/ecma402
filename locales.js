@@ -69,29 +69,29 @@ define([
 			var modulesToAdd = [];
 			locales.forEach(function (locale) {
 				var localeData = localeDataHash[locale];
-				modulesToAdd = modulesToAdd.concat(localeData.calendars.map(function (cal){return "./calendars/" + cal;}));
+				var calendarsDeps = localeData.calendars.map(function (cal) {return "./calendars/" + cal; });
+				modulesToAdd = modulesToAdd.concat(calendarsDeps);
 				delete localeData.calendars;
 			});
 			addModules(modulesToAdd);
 		},
 
 		onLayerEnd: function (write, data) {
-			function getLayerPath(data, loc) {
-				var match = data.path.match(/^(.*\/)?(.*)\.js$/);
-				return (match[1] || "") + "cldr/" + match[2] + "_" + loc + ".js";
-			}
-			function getLayerMid(data) {
-				var match = data.name.match(/^(.*\/)?(.*)$/);
-				return (match[1] || "") + "cldr/" + match[2];
-			}
+			// Calculate layer path
+			var match = data.path.match(/^(.*\/)?(.*)\.js$/);
+			var partialLayerPath = (match[1] || "") + "cldr/" + match[2] + "_";
+
+			// Calculate layer mid
+			match = data.name.match(/^(.*\/)?(.*)$/);
+			var layerMid = (match[1] || "") + "cldr/" + match[2];
 
 			locales.forEach(function (locale) {
-				var path = getLayerPath(data, locale);
+				var path = partialLayerPath + locale + ".js";
 				writeFile(path, "define(" + JSON.stringify(localeDataHash[locale]) + ")");
 			});
 
-			localeHash._layerMid = getLayerMid(data);
-			write("require.config({config:{'" + loadCss.id + "':" + JSON.stringify(localeHash) + "}});")
+			localeHash._layerMid = layerMid;
+			write("require.config({config:{'" + loadCss.id + "':" + JSON.stringify(localeHash) + "}});");
 
 			// Reset
 			localeDataHash = {};

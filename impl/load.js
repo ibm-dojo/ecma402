@@ -13,7 +13,7 @@ define([
 	return {
 		id: module.id,
 
-		load: function (locale, callerRequire, onload) {
+		load: function (locale, callerRequire, onload, loaderConfig) {
 			// Compute dependencies to require().
 			// For specified locale, load JSON files for its "currencies", "numbers" data.
 			var jsonElements = ["currencies", "numbers"];
@@ -23,7 +23,7 @@ define([
 			supportedCalendars.forEach(function (calendar) {
 				var calendarName = "ca-" +  (calendar === "gregory" ? "gregorian" : calendar);
 				// Add json data
-					jsonElements.push(calendarName);
+				jsonElements.push(calendarName);
 				// Add calendar module
 				if (calendar !== "gregory") {
 					calendarsToLoad.push(calendar);
@@ -49,7 +49,7 @@ define([
 			dependencies = dependencies.concat(calendarDependencies);
 
 			// Load all the JSON files requested, and any non-gregorian calendars
-			// that are required.  Return the locale data in a hash
+			// that are required. Return the locale data in a hash
 			require(dependencies, function () {
 				var dataAsArray = arguments, dataAsHash = {};
 				jsonElements.forEach(function (element, idx) {

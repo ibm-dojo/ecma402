@@ -254,7 +254,7 @@ define(["./List", "./Record",
 			 */
 			DefaultLocale : function () {
 				var result;
-				var global = (function (){return this;})();
+				var global = (function () {return this; })();
 				var navigator = global.navigator;
 				if (navigator && this.isStructurallyValidLanguageTag(navigator.language)) {
 					result = this.BestFitAvailableLocale(this.availableLocalesList, this
