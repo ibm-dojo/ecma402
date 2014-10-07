@@ -2,9 +2,9 @@
  * Commonly used routines throughout ECMA-402 package. Also referred to in the standard as "Abstract Operations"
  */
 define(["./List", "./Record",
-		"text!cldr/config/availableLocales.json",
-		"text!cldr/supplemental/aliases.json",
-		"text!cldr/supplemental/localeAliases.json",
+		"text!cldr/availableLocales.json",
+		"text!cldr-extra/supplemental/aliases.json",
+		"text!cldr-extra/supplemental/localeAliases.json",
 		"text!cldr/supplemental/parentLocales.json",
 		"text!cldr/supplemental/likelySubtags.json",
 		"text!cldr/supplemental/calendarPreferenceData.json",

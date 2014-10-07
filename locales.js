@@ -87,18 +87,22 @@ define([
 		onLayerEnd: function (write, data) {
 			// Calculate layer path
 			var match = data.path.match(/^(.*\/)?(.*)\.js$/);
+			console.log("partialLayerPath", "match[1]", match[1], "match[2]", match[2]);
 			var partialLayerPath = (match[1] || "") + "cldr/" + match[2] + "_";
 
 			// Calculate layer mid
 			match = data.name.match(/^(.*\/)?(.*)$/);
+			console.log("layerMid", "match[1]", match[1], "match[2]", match[2]);
 			var layerMid = (match[1] || "") + "cldr/" + match[2];
 
 			locales.forEach(function (locale) {
 				var path = partialLayerPath + locale + ".js";
+				console.log("define(" + JSON.stringify(localeDataHash[locale]) + ")");
 				writeFile(path, "define(" + JSON.stringify(localeDataHash[locale]) + ")");
 			});
 
 			localeHash._layerMid = layerMid;
+			console.log("require.config({config:{'" + loadCss.id + "':" + JSON.stringify(localeHash) + "}});");
 			write("require.config({config:{'" + loadCss.id + "':" + JSON.stringify(localeHash) + "}});");
 
 			// Reset
