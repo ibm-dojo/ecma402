@@ -1,7 +1,7 @@
 define([ "./impl/Record", "./impl/calendars", "./impl/common", "./locales!",
-		"requirejs-text/text!./cldr/supplemental/currencyData.json",
-		"requirejs-text/text!./cldr/supplemental/timeData.json",
-		"requirejs-text/text!./cldr/supplemental/numberingSystems.json" ],
+		"text!cldr/supplemental/currencyData.json",
+		"text!cldr/supplemental/timeData.json",
+		"text!cldr/supplemental/numberingSystems.json" ],
 	function (Record, calendars, common, preloads,
 			currencyDataJson, timeDataJson, numberingSystemsJson) {
 			/**

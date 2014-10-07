@@ -44,15 +44,20 @@ define({
 	// loader
 	useLoader: {
 		"host-node": "requirejs",
-		"host-browser": "../../../requirejs/require.js"
+		"host-browser": "../../bower_components/requirejs/require.js"
 	},
 
 	// Configuration options for the module loader; any AMD configuration options supported by the specified AMD loader
 	// can be used here
 	loader: {
-		baseUrl: "..",
 		config : { 
 			"ecma402/locales" : /^(ar|de(-CH)?|el|en(-(GB|NZ))?|es|fr|he|hi|id|ja|pt.*|sl|sr(-Latn)?|th|zh.*)$/ 
+		},
+		paths: {
+			"cldr": "bower_components/cldr-data",
+			"ecma402": ".",
+			"requirejs-dplugins": "bower_components/requirejs-dplugins",
+			"text": "bower_components/requirejs-text/text"
 		}
 	},
 	
