@@ -1,4 +1,4 @@
-define([ "./Record", "requirejs-text/text!../cldr/supplemental/calendarData.json"],
+define([ "./Record", "text!cldr/supplemental/calendarData.json"],
 	function (Record, calendarDataJson) {
 	/**
 	 * Utility functions that are common across multiple

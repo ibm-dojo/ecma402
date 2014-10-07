@@ -8,7 +8,7 @@ define([
 	"./common",
 	"require",
 	"module",
-	"requirejs-text/text"	// just so builder knows we will be using that module
+	"text"	// just so builder knows we will be using that module
 ], function (calendars, common, require, module) {
 	return {
 		id: module.id,
@@ -38,7 +38,7 @@ define([
 				dependencies = jsonElements = [config._layerMid + "_" + locale];
 			} else {
 				dependencies = jsonElements.map(function (element) {
-					return "requirejs-text/text!../cldr/" + locale + "/" + element + ".json";
+					return "text!cldr/" + locale + "/" + element + ".json";
 				});
 			}
 
