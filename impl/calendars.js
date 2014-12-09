@@ -1,5 +1,5 @@
 define([ "./Record",
-		"requirejs-text/text!../cldr/config/calendarDependencies.json",
+		"text!cldr/config/calendarDependencies.json",
         "../calendars/gregorianCalendar"],
     /**
      * Functions and data related to implementation of calendars.
