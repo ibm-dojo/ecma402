@@ -71,7 +71,8 @@ define({
                 "ecma402/tests/intl402/suite/ch12/12.3",
                 "ecma402/tests/intl402/suite/ch12/12.4",
                 "ecma402/tests/intl402/suite/ch13/13.2",
-                "ecma402/tests/intl402/suite/ch13/13.3"],
+                "ecma402/tests/intl402/suite/ch13/13.3",
+				"ecma402/tests/intl402/suite/ch13/13.4"],
 
 	// A regular expression matching URLs to files that should not be included in code coverage analysis
 	excludeInstrumentation: /^(?:ecma402\/tests|requirejs)/
