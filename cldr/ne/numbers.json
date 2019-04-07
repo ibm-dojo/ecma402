@@ -20,22 +20,22 @@
           "nan": "NaN"
         },
         "decimalFormats-numberSystem-deva": {
-          "standard": "#,##0.###"
+          "standard": "#,##,##0.###"
         },
         "decimalFormats-numberSystem-latn": {
-          "standard": "#,##0.###"
+          "standard": "#,##,##0.###"
         },
         "percentFormats-numberSystem-deva": {
-          "standard": "#,##0%"
+          "standard": "#,##,##0%"
         },
         "percentFormats-numberSystem-latn": {
-          "standard": "#,##0%"
+          "standard": "#,##,##0%"
         },
         "currencyFormats-numberSystem-deva": {
-          "standard": "¤ #,##0.00"
+          "standard": "¤ #,##,##0.00"
         },
         "currencyFormats-numberSystem-latn": {
-          "standard": "¤ #,##0.00"
+          "standard": "¤ #,##,##0.00"
         }
       }
     }
